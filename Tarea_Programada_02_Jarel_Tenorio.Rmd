@@ -1,0 +1,27 @@
+---
+title: "Tarea_Programada_02_Jarel_Tenorio"
+author: "Jarel Tenorio"
+date: "2024-06-06"
+output: pdf_document
+---
+
+## Parte 4: ejercicios de programación
+
+# Carga y Exploración de Datos
+```{r}
+# Se carga el conjunto de dados en una variable llamada "mtcars"
+mtcars=mtcars
+# Se imprimen las primeras 5 filas y tambien las 5 ultimas
+head(mtcars,5)
+tail(mtcars,5)
+# Se usa la funcion str para la estructura y el tipo de cada variable
+str(mtcars)
+# Se usa la funcion summary para ver un resumen estadistico de cada una de las variables numericas
+summary(mtcars)
+```
+
+# Visualización de Datos
+```{r}
+
+```
+
