@@ -2,17 +2,13 @@
 title: "Tarea_Programada_02_Jarel_Tenorio"
 author: "Jarel Tenorio"
 date: "2024-06-06"
-output: pdf_document
+output: html_document
 ---
 
 ## Parte 4: ejercicios de programación
 
-# Carga y Exploración de Datos
+Carga y Exploración de Datos
 ```{r}
-# Se usa un if para instalar el paquete "mtcars" en caso de no tenerlo instalado
-if (!require(mtcars)) {
-  install.packages("mtcars")
-}
 # Se carga el conjunto de dados en una variable llamada "mtcars" y se usa attach para poder usar las varibales sin tener que usar el $
 mtcars=mtcars
 attach(mtcars)
@@ -25,7 +21,7 @@ str(mtcars)
 summary(mtcars)
 ```
 
-# Visualización de Datos
+Visualización de Datos
 ```{r}
 # Se crea un histograma con la variable mpg
 hist(mpg, main = "Histograma de MPG",
@@ -35,7 +31,7 @@ hist(mpg, main = "Histograma de MPG",
      freq=TRUE)
 ```
 
-```{r}
+```{r warning=FALSE}
 # Se crea un boxplot para comparar la distribucion entre mpg y cyl
 boxplot(mpg~cyl, main= "Diagrama de Caja",
         xlab="Millas por Galon",
@@ -60,5 +56,30 @@ barplot(cantidad_cilindraje, main = "Cantidad de Automoviles Segun su Cilindraje
         ylab="Numero de Cilindros",
         col = "aquamarine2",
         horiz = TRUE)
+```
+
+Estadística Descriptiva
+```{r}
+# Se calcula la media, mediana, varianza y desviacion estandar de la variable mpg
+estadistica_descriptiva_mpg=data.frame(mediana=median(mpg),
+                                       media=round(mean(mpg),2),
+                                       varianza=round(var(mpg),2),
+                                       desvest=round(sd(mpg),2))
+t(estadistica_descriptiva_mpg)
+```
+
+```{r}
+# Se crea latabla de contingencia con las variables cyl y gear
+tabla_contingencia=table(cyl,gear)
+tabla_contingencia # Las columnas son el numero de marchas y las filas el numero de cilindraje
+```
+
+Estadística Inferencial
+```{r}
+t.test(mpg, mu=20)
+```
+
+```{r}
+cor.test(hp,mpg, method = "pearson")
 ```
 
