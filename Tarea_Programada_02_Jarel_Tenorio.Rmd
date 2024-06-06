@@ -9,8 +9,13 @@ output: pdf_document
 
 # Carga y Exploración de Datos
 ```{r}
-# Se carga el conjunto de dados en una variable llamada "mtcars"
+# Se usa un if para instalar el paquete "mtcars" en caso de no tenerlo instalado
+if (!require(mtcars)) {
+  install.packages("mtcars")
+}
+# Se carga el conjunto de dados en una variable llamada "mtcars" y se usa attach para poder usar las varibales sin tener que usar el $
 mtcars=mtcars
+attach(mtcars)
 # Se imprimen las primeras 5 filas y tambien las 5 ultimas
 head(mtcars,5)
 tail(mtcars,5)
@@ -22,6 +27,38 @@ summary(mtcars)
 
 # Visualización de Datos
 ```{r}
+# Se crea un histograma con la variable mpg
+hist(mpg, main = "Histograma de MPG",
+     xlab= "Millas por Galon",
+     ylab= "Frecuencia",
+     xlim=c(8,37), col= "purple",
+     freq=TRUE)
+```
 
+```{r}
+# Se crea un boxplot para comparar la distribucion entre mpg y cyl
+boxplot(mpg~cyl, main= "Diagrama de Caja",
+        xlab="Millas por Galon",
+        ylab="Cilindraje",
+        col="blue",border="red",
+        horizontal=TRUE,notch=TRUE)
+```
+
+```{r}
+# Se crea un diagrma de dispersion para ver la relacion entre hp y mpg
+plot(hp,mpg,
+     main="Diagrama de Dispersion",
+     xlab = "Caballos de Fuerza",
+     ylab = "Millas por Galon", pch=20)
+```
+
+```{r}
+# Se crea el grafico de barras para mostrar el numero de automoviles en cada categoria de cilindros
+cantidad_cilindraje=table(cyl)
+barplot(cantidad_cilindraje, main = "Cantidad de Automoviles Segun su Cilindraje",
+        xlab= "Cantidad de Automoviles",
+        ylab="Numero de Cilindros",
+        col = "aquamarine2",
+        horiz = TRUE)
 ```
 
