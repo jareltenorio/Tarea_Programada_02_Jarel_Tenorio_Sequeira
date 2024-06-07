@@ -5,9 +5,9 @@ date: "2024-06-06"
 output: html_document
 ---
 
-## Parte 4: ejercicios de programación
+# Parte 4: ejercicios de programación
 
-Carga y Exploración de Datos
+### Carga y Exploración de Datos
 ```{r}
 # Se carga el conjunto de dados en una variable llamada "mtcars" y se usa attach para poder usar las varibales sin tener que usar el $
 mtcars=mtcars
@@ -21,7 +21,7 @@ str(mtcars)
 summary(mtcars)
 ```
 
-Visualización de Datos
+### Visualización de Datos
 ```{r}
 # Se crea un histograma con la variable mpg
 hist(mpg, main = "Histograma de MPG",
@@ -58,7 +58,7 @@ barplot(cantidad_cilindraje, main = "Cantidad de Automoviles Segun su Cilindraje
         horiz = TRUE)
 ```
 
-Estadística Descriptiva
+### Estadística Descriptiva
 ```{r}
 # Se calcula la media, mediana, varianza y desviacion estandar de la variable mpg
 estadistica_descriptiva_mpg=data.frame(mediana=median(mpg),
@@ -74,7 +74,7 @@ tabla_contingencia=table(cyl,gear)
 tabla_contingencia # Las columnas son el numero de marchas y las filas el numero de cilindraje
 ```
 
-Estadística Inferencial
+### Estadística Inferencial
 ```{r}
 t.test(mpg, mu=20)
 ```
