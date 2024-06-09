@@ -8,20 +8,14 @@ output: html_document
 # Parte 4: ejercicios de programación
 
 ### Carga y Exploración de Datos
-```{r}
+```{r warning=FALSE}
 # Se carga el conjunto de dados en una variable llamada "mtcars" y se usa attach para poder usar las varibales sin tener que usar el $
 mtcars=mtcars
 attach(mtcars)
 ```
 
 ```{r}
-#Se impremen las primeras 5 filas
-head(mtcars,5)
-```
-
-```{r}
-# Se imprimen las ultimas 5 filas
-tail(mtcars,5)
+# Falta hacer el punto 1
 ```
 
 ```{r}
@@ -44,6 +38,9 @@ hist(mpg, main = "Histograma de MPG",
      freq=TRUE)
 ```
 
+Un histograma funciona para mostrar la distribucion de alguna variable. En este histograma se puede ver que la mayoria de los datos se encuentran entre 15-20 y el minimo entre 25-30.
+
+
 ```{r warning=FALSE}
 # Se crea un boxplot para comparar la distribucion entre mpg y cyl
 boxplot(mpg~cyl, main= "Diagrama de Caja",
@@ -53,6 +50,9 @@ boxplot(mpg~cyl, main= "Diagrama de Caja",
         horizontal=TRUE,notch=TRUE)
 ```
 
+El diagrama de caja muestra las distribuciones. La caja representa el primer y tercer cuartil o tambien conocido como rango intercuatilico. Los bigotes representan los valores minimos y maximos y los puntos que se encuentran fuera de los bigotes son valores extremos o atipicos.
+
+
 ```{r}
 # Se crea un diagrma de dispersion para ver la relacion entre hp y mpg
 plot(hp,mpg,
@@ -60,6 +60,9 @@ plot(hp,mpg,
      xlab = "Caballos de Fuerza",
      ylab = "Millas por Galon", pch=20)
 ```
+
+Los diagramas de dispersion funcionan para analizar la relacion entre dos variables de tipo numericas (para este caso los caballos de fuerza y la millas por galon). Los puntos representan donde se interseca cada observacion de forma individual.
+
 
 ```{r}
 # Se crea el grafico de barras para mostrar el numero de automoviles en cada categoria de cilindros
@@ -71,7 +74,15 @@ barplot(cantidad_cilindraje, main = "Cantidad de Automoviles Segun su Cilindraje
         horiz = TRUE)
 ```
 
+Los graficos de barras es el grafico mas usado en estadistica y sirve para representar y comparar la cantidad de x valores. En este caso podemos observar que hay 14 automoviles con 8 cilindros, 7 con 6 cilindros y 11 con 4 cilindros.
+
+
 ### Estadística Descriptiva
+
+La mediana representa el punto central de los datos, en este caso la mediana es de 19.20.
+El valor promedio de los datos es de 20.09. 
+La varianza es la dispersion de los datos, para los valores de millas por galon la varianza es de 36.32, y la dispersion promedio de los datos con respecto a la media, o desviacion estandar es de 6.03.
+
 ```{r}
 # Se calcula la media, mediana, varianza y desviacion estandar de la variable mpg
 estadistica_descriptiva_mpg=data.frame(mediana=median(mpg),
@@ -81,18 +92,26 @@ estadistica_descriptiva_mpg=data.frame(mediana=median(mpg),
 t(estadistica_descriptiva_mpg)
 ```
 
+Para la tabla de contingencia, las columnas son las marchas y las filas el cilindraje. Se puede interpretar, por ejemplo, como que hay 1 automovil que tiene 3 marchas y 4 cilindros u 8 automoviles con 4 marchas y 4 cilindros.
+
 ```{r}
-# Se crea latabla de contingencia con las variables cyl y gear
+# Se crea la tabla de contingencia con las variables cyl y gear, usando la funcion table
 tabla_contingencia=table(cyl,gear)
-tabla_contingencia # Las columnas son el numero de marchas y las filas el numero de cilindraje
+tabla_contingencia
 ```
 
 ### Estadística Inferencial
-```{r}
-t.test(mpg, mu=20)
-```
+
+Las pruebas t, o T de Student sirven para determinar si hay alguna diferencia significativa entre dos medianas de dos grupos. En este caso, dado que el p-value o probabilidad de valor nos dio 0.9328 y y es un valor muy alto (mayor a 0.05) podemos concluir con que NO hay suficiente evidencia estadistica para decir que el promedio de mpg es significativamente diferente de 20.
 
 ```{r}
-cor.test(hp,mpg, method = "pearson")
+t.test(mpg, mu=20) # se usa la funcion t.test y se le da el valor de mu, en este caso de 20
+```
+
+La prueba de correlacion de Pearson es una medida estadistica que funciona para evaluar la fuerza y direccion de la relacion lineal entre dos variables (hp y mpg). El valor siempre da entre -1 y 1.
+Dado que obtuvimos una correlacion de -0.77 podemos interpretarlo como que el -0.77 indica una correlacion negativa fuerte entre las dos variables. Esto significa que mientras una variable aumenta, la otra disminuye.
+
+```{r}
+cor.test(hp,mpg, method = "pearson") # se usa la funcion cor.test y se aclara que el metodo a usar es Pearson
 ```
 
