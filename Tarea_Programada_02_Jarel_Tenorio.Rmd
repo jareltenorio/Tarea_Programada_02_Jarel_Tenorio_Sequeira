@@ -12,12 +12,25 @@ output: html_document
 # Se carga el conjunto de dados en una variable llamada "mtcars" y se usa attach para poder usar las varibales sin tener que usar el $
 mtcars=mtcars
 attach(mtcars)
-# Se imprimen las primeras 5 filas y tambien las 5 ultimas
+```
+
+```{r}
+#Se impremen las primeras 5 filas
 head(mtcars,5)
+```
+
+```{r}
+# Se imprimen las ultimas 5 filas
 tail(mtcars,5)
+```
+
+```{r}
 # Se usa la funcion str para la estructura y el tipo de cada variable
 str(mtcars)
-# Se usa la funcion summary para ver un resumen estadistico de cada una de las variables numericas
+```
+
+```{r}
+# Se usa summary para ver un resumen estadistico de cada una de las variables numericas
 summary(mtcars)
 ```
 
@@ -27,7 +40,7 @@ summary(mtcars)
 hist(mpg, main = "Histograma de MPG",
      xlab= "Millas por Galon",
      ylab= "Frecuencia",
-     xlim=c(8,37), col= "purple",
+     xlim=c(8,37), col= "lightblue2",
      freq=TRUE)
 ```
 
@@ -36,7 +49,7 @@ hist(mpg, main = "Histograma de MPG",
 boxplot(mpg~cyl, main= "Diagrama de Caja",
         xlab="Millas por Galon",
         ylab="Cilindraje",
-        col="blue",border="red",
+        col="darkseagreen3",border="darkolivegreen4",
         horizontal=TRUE,notch=TRUE)
 ```
 
