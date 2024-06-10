@@ -15,10 +15,6 @@ attach(mtcars)
 ```
 
 ```{r}
-# Falta hacer el punto 1
-```
-
-```{r}
 # Se usa la funcion str para la estructura y el tipo de cada variable
 str(mtcars)
 ```
