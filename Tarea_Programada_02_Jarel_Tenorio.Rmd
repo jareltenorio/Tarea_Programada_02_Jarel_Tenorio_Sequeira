@@ -12,6 +12,8 @@ output: html_document
 # Se carga el conjunto de dados en una variable llamada "mtcars" y se usa attach para poder usar las varibales sin tener que usar el $
 mtcars=mtcars
 attach(mtcars)
+library(rmarkdown)
+paged_table(mtcars, options = list(rows.print=6)) # Se usa la funcion paged_table para que, al pasarse a un html se muestren solo 6 observaciones por pagina
 ```
 
 ```{r}
